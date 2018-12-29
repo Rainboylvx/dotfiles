@@ -105,15 +105,15 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
+set $WS1 1
+set $WS2 2
+set $WS3 3
+set $WS4 4
+set $WS5 5
+set $WS6 6
+set $WS7 7
+set $WS8 8
+set $WS9 9
 set $ws10 "10"
 
 # switch to workspace
@@ -174,3 +174,15 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+
+
+# 增加音量
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% 
+# 减少音量
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% 
+# mute sound
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle 
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessDown exec xbright -500 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbright +500 # increase screen brightness
