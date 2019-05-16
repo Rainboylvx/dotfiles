@@ -23,3 +23,9 @@ alias dg="python ../data.py"
 alias tp="trash-put"
 alias te="trash-empty"
 alias tl="trash-list"
+
+# 
+alias ple="sudo"
+
+# node
+alias n="node"
