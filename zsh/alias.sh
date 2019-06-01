@@ -29,3 +29,7 @@ alias ple="sudo"
 
 # node
 alias n="node"
+
+# 常用缩写
+alias mk="mkdir"
+alias v="vim"

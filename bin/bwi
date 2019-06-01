@@ -7,5 +7,6 @@ then
     filename="1.cpp"
 fi
 echo $filename" ==> "${filename%.*}
-#g++ -mcmodel=medium -g -o ${filename%.*} $filename -I /home/rainboy/__git__/random/include/effolkronium
 g++ -mcmodel=medium -g -o ${filename%.*} $filename
+./${filename%.*} < in
+

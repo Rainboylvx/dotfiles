@@ -94,3 +94,6 @@ git config --global core.editor "vim"
  - cmake
  - http-server 
  - typescript
+
+
+## rime 的按安装
