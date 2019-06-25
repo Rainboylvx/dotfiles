@@ -31,5 +31,7 @@ alias ple="sudo"
 alias n="node"
 
 # 常用缩写
-alias mk="mkdir"
-alias v="vim"
+alias v="nvim"
+alias vim="nvim"
+alias nv="nvim"
+alias mk='mk() { mkdir $1 && cd $1; };mk'

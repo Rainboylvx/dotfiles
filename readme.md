@@ -96,4 +96,8 @@ git config --global core.editor "vim"
  - typescript
 
 
-## rime 的按安装
+## rime的安装
+
+ - 先安装[星空键道6](https://gitee.com/xkinput/Rime_JD)
+ - 然后将`rime/symbols.yaml`安装到`~/.config/fcitx/rime`
+ - 修改`xkjd6.schema.yaml`的`punct: "^\\]([0-9]0?|[a-z]+)$"`
