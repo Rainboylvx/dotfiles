@@ -1,12 +1,15 @@
 #!/bin/env bash
 
-# 编译命令
 filename=$1
+input=$2
 if [ x$1 == x ]
 then
     filename="1.cpp"
 fi
-echo $filename" ==> "${filename%.*}
-g++ -mcmodel=medium -g -o ${filename%.*} $filename
-./${filename%.*} < in
+if [ x$2 == x ]
+then
+    input="in"
+fi
 
+b $filename
+./${filename%.*} < $input

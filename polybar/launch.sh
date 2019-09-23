@@ -10,10 +10,10 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 #polybar example &
 if type "xrandr"; then
     for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-        MONITOR=$m polybar --reload main_bar &
+        MONITOR=$m nohup polybar --reload main_bar  > /dev/null 2>&1 &
     done
 else
-    polybar --reload main_bar &
+    nohup polybar --reload main_bar  > /dev/null 2>&1 &
 fi
 #polybar  main_bar &
 
