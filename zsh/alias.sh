@@ -35,3 +35,9 @@ alias v="nvim"
 alias vim="nvim"
 alias nv="nvim"
 alias mk='mk() { mkdir $1 && cd $1; };mk'
+
+# dot
+alias graphPreview="dot -Txlib"
+
+# noi
+alias cp_noi_code_compare_template="cp -r $DOTFILES_PATH/noi_code_compare_template/* ."

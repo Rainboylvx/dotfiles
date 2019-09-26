@@ -101,3 +101,14 @@ git config --global core.editor "vim"
  - 先安装[星空键道6](https://gitee.com/xkinput/Rime_JD)
  - 然后将`rime/symbols.yaml`安装到`~/.config/fcitx/rime`
  - 修改`xkjd6.schema.yaml`的`punct: "^\\]([0-9]0?|[a-z]+)$"`
+
+## 代码 对拍
+
+**安装**
+
+ - [cyaron](https://github.com/luogu-dev/cyaron)
+
+ **命令**
+
+  - `cp_noi_code_compare_template`
+  - `code_cmp.js`
