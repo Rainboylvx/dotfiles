@@ -1,0 +1,7 @@
+# default.custom.yaml
+
+patch:
+  schema_list:
+    - schema: double_pinyin_flypy
+  'punctuator/import_preset': symbols
+  'recognizer/patterns/punct': "^/([a-z]+|[0-9])$"

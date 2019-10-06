@@ -54,7 +54,9 @@ sudo fc-cache
 ## zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-## 安装vim
+## 安装vim / neovim
+
+具体去看[RainboyVim](https://github.com/rainboylvx/RainboyVim)的操作要求
 
 
 ## 背景

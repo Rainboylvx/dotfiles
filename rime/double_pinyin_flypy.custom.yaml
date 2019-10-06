@@ -1,0 +1,6 @@
+# Rime schema
+# encoding: utf-8
+patch:
+  'punctuator/import_preset': symbols
+  'recognizer/patterns/punct': "^\\]([a-z]+|[0-9])$"
+

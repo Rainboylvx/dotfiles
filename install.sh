@@ -10,11 +10,15 @@ pac tmux
 pac nodejs npm yarn
 pac git
 pac cmake
+## https://wiki.archlinux.org/index.php/Secure_Shell_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E5%BC%BA%E5%88%B6%E5%85%AC%E9%92%A5%E9%AA%8C%E8%AF%81
 pac openssh
+systemctl start sshd
+
 pac xfce4-terminal
 pac net-tools
 pac fcitx fcitx-rime fcitx-configtool
 pac neovim python-neovim
+pac fasd
 
 ## git 设定
 git config --global core.quotepath false
