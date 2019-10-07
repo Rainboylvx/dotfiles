@@ -114,3 +114,7 @@ git config --global core.editor "vim"
 
   - `cp_noi_code_compare_template`
   - `code_cmp.js`
+
+## default browser
+
+https://forum.manjaro.org/t/how-can-i-change-the-default-browser-in-i3/60715/2
