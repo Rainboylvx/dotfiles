@@ -15,7 +15,9 @@ sudo pacman-mirrors -i -c China -m rank
 
 /etc/pacman.conf
 ```
-[archlinxcn]
+## 中国科学技术大学 (ipv4, ipv6, http, https)
+[archlinuxcn]
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 
 
 sudo pacman -Syy
@@ -48,7 +50,11 @@ make & sudo make install
 sudo pacman -S wqy-microhei
 
 sudo wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf -P /usr/share/fonts
-sudo fc-cache
+
+cd /usr/share/fonts
+sudo mkfontscale
+sudo mkfontdir
+sudo fc-cache -fv
 
 
 ## zsh
@@ -89,6 +95,8 @@ yarn config set registry https://registry.npm.taobao.org
 git config --global user.email rainboylvx@qq.com
 git config --global user.name rainboy
 git config --global core.editor "vim"
+# 解决git status不能显示中文
+git config --global core.quotepath false
 ```
 
  - cmake
@@ -97,10 +105,11 @@ git config --global core.editor "vim"
 
 
 ## rime的安装
-
- - 先安装[星空键道6](https://gitee.com/xkinput/Rime_JD)
- - 然后将`rime/symbols.yaml`安装到`~/.config/fcitx/rime`
- - 修改`xkjd6.schema.yaml`的`punct: "^\\]([0-9]0?|[a-z]+)$"`
+```
+sudo pacman -S fcitx fcitx-rime fcitx-configtool
+```
+Linux下fcitx-rime接挂小鹤音形 (解决无法正常使用的问题)
+https://www.flypy.com/bbs/forum.php?mod=viewthread&tid=516&extra=
 
 ## 代码 对拍
 
@@ -112,3 +121,8 @@ git config --global core.editor "vim"
 
   - `cp_noi_code_compare_template`
   - `code_cmp.js`
+
+## Arch Linux中禁用UTC解决双系统时间问题
+https://www.cnblogs.com/zhuxiaoxi/p/7714535.html
+
+

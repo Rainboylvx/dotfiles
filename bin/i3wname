@@ -1,0 +1,18 @@
+#!/bin/env node
+var name = process.argv[2]
+if( !name){
+  console.log('useage: i3wname workspace_name')
+  process.exit(1)
+}
+
+var {execSync:exec} = require("child_process")
+var _json = exec(`i3-msg -t get_outputs`,{encoding:'utf-8'})
+var json= JSON.parse(_json)
+var current_workspace = json[0].current_workspace || json[1].current_workspace
+var [workspace_number,workspace_name] = current_workspace.split(':')
+
+var new_name = `${workspace_number}:${name}`
+
+exec(`i3-msg 'rename workspace "${current_workspace}" to "${new_name}"'`,{encoding:'utf-8'})
+//exec(`i3-msg 'bindsym $mod+${workspace_number} workspace ${new_name}'`,{encoding:'utf-8'})
+//exec(`i3-msg 'bindsym $mod+3 workspace $ws3'`)

@@ -7,15 +7,18 @@
 exec_always --no-startup-id fcitx &
 exec_always --no-startup-id /home/rainboy/.config/polybar/launch.sh
 exec_always --no-startup-id nm-applet &
+exec_always --no-startup-id uTools &
+exec_always --no-startup-id pamac-tray &
 exec --no-startup-id nitrogen --restore &
-exec_always --no-startup-id sslocal -c $HOME/.scripts/ss.json > /dev/null &
+#exec_always --no-startup-id sslocal -c $HOME/.scripts/ss.json > /dev/null &
 
 # 开启混成 可以透明
 exec --no-startup-id compton -b
 #i3 wm, hide window title bar
 for_window [class="^.*"] border pixel 4
+for_window [class="uTools"] move up 300px
 new_window 1pixel
-gaps inner 15
+gaps inner 1
 gaps outer 5
 
 # i3 config file (v4)
@@ -46,6 +49,27 @@ floating_modifier $mod
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+m exec xfce4-terminal --drop-down
 bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+Return exec urxvt
+#
+#
+#
+# Start Applications
+bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
+bindsym $mod+F2 exec google-chrome-stable
+bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F4 exec xfce4-terminal -e ranger
+bindsym $mod+Shift+F3 exec ranger
+bindsym $mod+F5 exec terminal -e 'mocp'
+bindsym $mod+t exec --no-startup-id pkill compton
+bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym Print exec --no-startup-id i3-scrot
+bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+#bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+bindsym $mod+p exec /home/rainboy/mycode/dotfiles/bin/displayToggle.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -59,23 +83,24 @@ bindsym $mod+d exec dmenu_recency
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
+bindsym $mod+j focus up
 bindsym $mod+k focus down
-bindsym $mod+l focus up
+bindsym $mod+h focus left
 #bindsym $mod+semicolon focus right
-bindsym $mod+h focus right
+bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+#bindsym $mod+Shift+j move left
+#bindsym $mod+Shift+k move down
+#bindsym $mod+Shift+l move up
+#bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
 
 # split in horizontal orientation
 bindsym $mod+Shift+h split h
@@ -92,10 +117,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-#bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-#bindsym $mod+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -125,40 +150,40 @@ set $WS9 9
 set $ws10 "10"
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
 # workspaces from 11-20
-bindsym $mod+Control+1 workspace 11
-bindsym $mod+Control+2 workspace 12
-bindsym $mod+Control+3 workspace 13
-bindsym $mod+Control+4 workspace 14
-bindsym $mod+Control+5 workspace 15
-bindsym $mod+Control+6 workspace 16
-bindsym $mod+Control+7 workspace 17
-bindsym $mod+Control+8 workspace 18
-bindsym $mod+Control+9 workspace 19
-bindsym $mod+Control+0 workspace 20
+bindsym $mod+Control+1 workspace number 11
+bindsym $mod+Control+2 workspace number 12
+bindsym $mod+Control+3 workspace number 13
+bindsym $mod+Control+4 workspace number 14
+bindsym $mod+Control+5 workspace number 15
+bindsym $mod+Control+6 workspace number 16
+bindsym $mod+Control+7 workspace number 17
+bindsym $mod+Control+8 workspace number 18
+bindsym $mod+Control+9 workspace number 19
+bindsym $mod+Control+0 workspace number 20
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -214,5 +239,5 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle 
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessDown exec xbright -500 # decrease screen brightness
-bindsym XF86MonBrightnessUp exec xbright +500 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbright -5000 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbright +5000 # increase screen brightness

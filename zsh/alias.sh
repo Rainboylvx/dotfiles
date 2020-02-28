@@ -20,9 +20,10 @@ alias gs="git status"
 alias dg="python ../data.py"
 
 # trash-cli
-alias tp="trash-put"
-alias te="trash-empty"
-alias tl="trash-list"
+alias rm="trash-put"              # 删除
+alias rm-empty="trash-empty"      # 清空回收站
+alias rm-list="trash-list"        # 列出回收站
+alias rm-restore="trash-restore"
 
 # 
 alias ple="sudo"
@@ -35,9 +36,22 @@ alias v="nvim"
 alias vim="nvim"
 alias nv="nvim"
 alias mk='mk() { mkdir $1 && cd $1; };mk'
+#alias luogoCode=''
 
 # dot
 alias graphPreview="dot -Txlib"
 
 # noi
 alias cp_noi_code_compare_template="cp -r $DOTFILES_PATH/noi_code_compare_template/* ."
+
+alias setproxy="export http_proxy=http://127.0.0.1:8123 && export https_proxy=https://127.0.0.1:8123"
+#unset http_proxy # 当前终端取消代理
+
+# rbook
+alias rbookSingle="/home/rainboy/mycode/rbookr/rbook/bin/single"
+
+# mocp
+alias mocp="padsp mocp"
+
+# luogu 题目下载
+alias luogu="luogu.js $(basename $(pwd))"

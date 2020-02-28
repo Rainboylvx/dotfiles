@@ -4,7 +4,8 @@ if [ $# == 0 ]; then
     # 默认输出到HDMI1
     echo "输出到HDMI1,关闭eDP1"
     xrandr --output HDMI1 --auto --primary 
-    xrandr --output eDP1 --left-of HDMI1 --auto
+    #xrandr --output eDP1 --left-of HDMI1 --auto
+    xrandr --output eDP1 --off
 else
     echo "输出到eDP1,关闭HDMI1"
     xrandr --output HDMI1 --off --output eDP1 --auto
