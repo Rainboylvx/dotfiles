@@ -28,9 +28,36 @@ sudo pacman -S archlinxcn-keyring
 
 ## 3.安装google-chrome
 
-fcitx 
-fcitx-im
-fcitx-rime
+
+```sh
+# edit ~/.profile
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export EDITOR=/usr/bin/nano
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+# fix "xdg-open fork-bomb" export your preferred browser from here
+#export BROWSER=/usr/bin/palemoon
+export BROWSER=/usr/bin/google-chrome-stable
+```
+
+
+## 安装 rime 输入法
+
+```sh
+sudo pacman -S fcitx fcitx-im fcitx-rime fcitx-configtool
+
+# edit ~/.xprofile
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+# 创建小鹤音形
+rm ~/.config/fcitx/rime
+cp -r rime ~/.config/fcitx
+
+# 重新部署
+```
+
+
 
 .xinitrc
 
