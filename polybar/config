@@ -75,7 +75,7 @@ tray-maxsize = 18
 tray-detached = false
 tray-background = ${colors.my_background}
 
-wm-restack = i3
+;wm-restack = i3
 
 ;override-redirect = true
 

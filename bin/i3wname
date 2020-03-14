@@ -8,7 +8,15 @@ if( !name){
 var {execSync:exec} = require("child_process")
 var _json = exec(`i3-msg -t get_outputs`,{encoding:'utf-8'})
 var json= JSON.parse(_json)
-var current_workspace = json[0].current_workspace || json[1].current_workspace
+var current_workspace 
+for( let j of json){
+  //console.log( j)
+  if( j.current_workspace){
+    current_workspace =j.current_workspace
+    break;
+  }
+}
+//console.log(current_workspace)
 var [workspace_number,workspace_name] = current_workspace.split(':')
 
 var new_name = `${workspace_number}:${name}`

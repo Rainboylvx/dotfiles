@@ -7,8 +7,9 @@
 exec_always --no-startup-id fcitx &
 exec_always --no-startup-id /home/rainboy/.config/polybar/launch.sh
 exec_always --no-startup-id nm-applet &
-exec_always --no-startup-id uTools &
+#exec_always --no-startup-id uTools &
 exec_always --no-startup-id pamac-tray &
+exec --no-startup-id uTools &
 exec --no-startup-id nitrogen --restore &
 #exec_always --no-startup-id sslocal -c $HOME/.scripts/ss.json > /dev/null &
 
@@ -16,7 +17,9 @@ exec --no-startup-id nitrogen --restore &
 exec --no-startup-id compton -b
 #i3 wm, hide window title bar
 for_window [class="^.*"] border pixel 4
-for_window [class="uTools"] move up 300px
+#for_window [class="uTools"] move up 300px
+for_window [class=".*qq.exe.*"] floating enable
+for_window [class=".*qq.exe.*"] border none
 new_window 1pixel
 gaps inner 1
 gaps outer 5

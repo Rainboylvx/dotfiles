@@ -55,3 +55,7 @@ alias mocp="padsp mocp"
 
 # luogu 题目下载
 alias luogu="luogu.js $(basename $(pwd))"
+
+# python
+alias py=python3
+
