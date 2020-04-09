@@ -20,6 +20,7 @@ for_window [class="^.*"] border pixel 4
 #for_window [class="uTools"] move up 300px
 for_window [class=".*qq.exe.*"] floating enable
 for_window [class=".*qq.exe.*"] border none
+for_window [class="zhumu"] floating enable
 new_window 1pixel
 gaps inner 1
 gaps outer 5
@@ -52,6 +53,8 @@ floating_modifier $mod
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+m exec xfce4-terminal --drop-down
 bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+m exec tilix -q
+#bindsym $mod+Return exec tilix
 #bindsym $mod+Return exec urxvt
 #
 #
@@ -66,8 +69,10 @@ bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+#bindsym Print exec --no-startup-id i3-scrot
+#bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+bindsym Print exec --no-startup-id deepin-screenshot
+bindsym $mod+Print exec --no-startup-id drawing
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 #bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
@@ -107,7 +112,6 @@ bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+Shift+h split h
-
 # split in vertical orientation
 bindsym $mod+Shift+v split v
 

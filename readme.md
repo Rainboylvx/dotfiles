@@ -133,10 +133,10 @@ git config --global core.quotepath false
 
 ## rime的安装
 ```
-sudo pacman -S fcitx fcitx-rime fcitx-configtool
+sudo pacman -S fcitx fcitx-rime fcitx-configtool fcitx-qt5
+cp rime ~/.config/fcitx/rime
+# 重新部署
 ```
-Linux下fcitx-rime接挂小鹤音形 (解决无法正常使用的问题)
-https://www.flypy.com/bbs/forum.php?mod=viewthread&tid=516&extra=
 
 ## 代码 对拍
 

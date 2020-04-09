@@ -1,5 +1,5 @@
 patch:
     punctuator:
         import_preset: symbols
-    'recognizer/patterns/punct': "^]([a-z]+|[0-9])*$"
+    'recognizer/patterns/punct': "^]([a-z])*$"
 
