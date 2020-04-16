@@ -6,9 +6,12 @@
 // @author       rainboy
 // @grant        GM_setClipboard
 // @grant        GM_registerMenuCommand
-// @match        *
+// @include   *
 // @license      MIT
 // ==/UserScript==
+
+
+
 ;(() => {
   // 注册菜单
   function registerMenu() {
@@ -19,8 +22,10 @@
         .replace( '[', '「')
         .replace(']', '」')
       console.log(title)
-      GM_setClipboard(`[${title}](${window.location.href})`,'text')
+      GM_setClipboard(`- [${title}](${window.location.href})`,'text')
     })
   }
   registerMenu()
 })()
+
+
