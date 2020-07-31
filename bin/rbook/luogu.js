@@ -17,7 +17,6 @@ console.log(id)
 
 
 let cookie = ''
-
 var getInfo = function(id){
 
   let a = e(`curl https://www.luogu.com.cn/problem/P${id} --cookie "${cookie}"`,{encoding:'utf-8'})
@@ -38,5 +37,14 @@ f = id[0]
 let info = getInfo(f)
 console.log(info.currentData.problem.pid,info.currentData.problem.title)
 console.log(info.currentData.problem)
+//输出数据
+console.log(`数据长度 : ${ info.currentData.problem.samples.length}`)
+for( let i = 0 ;i < info.currentData.problem.samples.length || 0 ;i++){
+  let name_in  =  i == 0 ? 'in' : `in${i+1}`
+  let name_out  =  i == 0 ? 'rout' : `rout${i+1}`
+  let [in_data,out_data] = info.currentData.problem.samples[i]
+  fs.writeFileSync(name_in,in_data,{encoding:'utf-8'})
+  fs.writeFileSync(name_out,out_data,{encoding:'utf-8'})
+}
 let tel = template(info.currentData.problem)
 fs.writeFileSync(`1.md`,tel.trim(),{encoding:'utf-8'})

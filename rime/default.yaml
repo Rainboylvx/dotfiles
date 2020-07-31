@@ -35,12 +35,18 @@ punctuator:
 
 key_binder:
   bindings:
-    __patch:
-      - key_bindings:/emacs_editing
-      - key_bindings:/move_by_word_with_tab
-      - key_bindings:/paging_with_minus_equal
-      - key_bindings:/paging_with_comma_period
-      - key_bindings:/numbered_mode_switch
+    - { when: always, accept: Control+Shift+space, select: .next }
+    - { when: always, accept: Shift+space, toggle: ascii_mode }
+    - { when: always, accept: Control+comma, toggle: full_shape }
+    - { when: always, accept: Control+period, toggle: ascii_punct }
+    - { when: always, accept: Control+slash, toggle: simplification }
+    - { when: always, accept: Control+backslash, toggle: extended_charset }
+    #__patch:
+      #- key_bindings:/emacs_editing
+      #- key_bindings:/move_by_word_with_tab
+      #- key_bindings:/paging_with_minus_equal
+      #- key_bindings:/paging_with_comma_period
+      #- key_bindings:/numbered_mode_switch
 
 recognizer:
   patterns:

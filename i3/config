@@ -9,12 +9,16 @@ exec_always --no-startup-id /home/rainboy/.config/polybar/launch.sh
 exec_always --no-startup-id nm-applet &
 #exec_always --no-startup-id uTools &
 exec_always --no-startup-id pamac-tray &
-exec --no-startup-id uTools &
+exec_always --no-startup-id udiskie -aNt &
+#exec --no-startup-id uTools &
 exec --no-startup-id nitrogen --restore &
+#exec --no-startup-id xautolock -time 10 -locker 'i3lock-fancy -gpf 文泉驿等宽正黑 -- scrot -z -o'
 #exec_always --no-startup-id sslocal -c $HOME/.scripts/ss.json > /dev/null &
+#
+exec_always --no-startup-id /home/rainboy/bin/start_in_start.sh
 
 # 开启混成 可以透明
-exec --no-startup-id compton -b
+exec --no-startup-id picom -b
 #i3 wm, hide window title bar
 for_window [class="^.*"] border pixel 4
 #for_window [class="uTools"] move up 300px
@@ -83,12 +87,12 @@ bindsym $mod+p exec /home/rainboy/mycode/dotfiles/bin/displayToggle.sh
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec rofi -show drun -theme config
-bindsym $mod+d exec dmenu_recency
+bindsym $mod+d exec rofi -show drun -theme config
+#bindsym $mod+d exec dmenu_recency
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus up
@@ -239,11 +243,14 @@ bindsym $mod+r mode "resize"
 
 
 # 增加音量
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% 
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% 
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 +5%
 # 减少音量
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% 
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% 
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 -5%
 # mute sound
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle 
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle 
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 toggle
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessDown exec xbright -5000 # decrease screen brightness

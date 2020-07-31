@@ -1,0 +1,16 @@
+#!/bin/zsh
+let cnt=1
+while true
+do
+    python ./data_generator.py > compare/input
+    ./1 < compare/input > compare/output.a 2>/dev/null
+    ./2 < compare/input > compare/output.b 2>/dev/null
+    diff compare/output.a compare/output.b
+    if [ "$?" != 0 ];then
+        echo "no"
+        exit 1
+    else
+        echo "yes" $cnt
+        let cnt++
+    fi
+done

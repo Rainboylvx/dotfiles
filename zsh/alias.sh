@@ -14,6 +14,14 @@ alias gp="git push origin master"
 alias gm="git commit -m "
 alias gs="git status"
 
+gitpush(){
+    git push origin "$1"
+    git push mirror "$1"
+}
+
+alias gpp="gitpush origin master"
+
+
 ## 数字生成相关
 
 # data gen 
@@ -33,7 +41,7 @@ alias n="node"
 
 # 常用缩写
 alias v="nvim"
-alias vim="nvim"
+#alias vim="nvim"
 alias nv="nvim"
 alias mk='mk() { mkdir $1 && cd $1; };mk'
 #alias luogoCode=''
@@ -44,7 +52,9 @@ alias graphPreview="dot -Txlib"
 # noi
 alias cp_noi_code_compare_template="cp -r $DOTFILES_PATH/noi_code_compare_template/* ."
 
-alias setproxy="export http_proxy=http://127.0.0.1:8123 && export https_proxy=https://127.0.0.1:8123"
+alias proxy="export ALL_PROXY=socks5://127.0.0.1:1080"
+alias unproxy="unset ALL_PROXY"
+alias ipinfo="curl https://api.ip.sb/geoip | jq .country"
 #unset http_proxy # 当前终端取消代理
 
 # rbook
@@ -58,4 +68,3 @@ alias luogu="luogu.js $(basename $(pwd))"
 
 # python
 alias py=python3
-
