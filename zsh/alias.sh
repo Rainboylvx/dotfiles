@@ -68,3 +68,4 @@ alias luogu="luogu.js $(basename $(pwd))"
 
 # python
 alias py=python3
+alias "screen_close"="xset dpms force off"

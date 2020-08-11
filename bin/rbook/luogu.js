@@ -18,8 +18,9 @@ console.log(id)
 
 let cookie = ''
 var getInfo = function(id){
+  let realId = /^\d/.test(id) ? `P${id}` : id;
 
-  let a = e(`curl https://www.luogu.com.cn/problem/P${id} --cookie "${cookie}"`,{encoding:'utf-8'})
+  let a = e(`curl https://www.luogu.com.cn/problem/${realId} --cookie "${cookie}"`,{encoding:'utf-8'})
   let dataReg = /decodeURIComponent\("([\s\S]+?)"\)/
   //console.log(a)
   //console.log(dataReg.test(a))
