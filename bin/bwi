@@ -11,5 +11,5 @@ then
     input="in"
 fi
 
-b $filename
+b.sh $filename
 ./${filename%.*} < $input

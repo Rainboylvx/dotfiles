@@ -8,4 +8,4 @@ then
 fi
 echo $filename" ==> "${filename%.*}
 #g++ -mcmodel=medium -g -o ${filename%.*} $filename -I /home/rainboy/__git__/random/include/effolkronium
-g++ -DLOCAL -DDEBUG -g -o ${filename%.*} $filename
+g++ -DLOCAL -DDEBUG -include cpp_tools.h -g -o ${filename%.*} $filename

@@ -69,3 +69,14 @@ alias luogu="luogu.js $(basename $(pwd))"
 # python
 alias py=python3
 alias "screen_close"="xset dpms force off"
+
+# diff
+alias diff="diff -W 100 -y "
+
+# tmux
+alias tmux="TERM=xterm-256color tmux"
+#
+alias random-secret="< /dev/urandom tr -dc 0-9-A-Z-a-z-|head -c ${1:-10};echo"
+
+
+
