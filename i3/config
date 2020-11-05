@@ -10,7 +10,7 @@ exec_always --no-startup-id nm-applet &
 exec_always --no-startup-id dunst &
 #exec_always --no-startup-id uTools &
 exec_always --no-startup-id pamac-tray &
-exec_always --no-startup-id udiskie -aNt &
+exec_always --no-startup-id "killall udiskie; exec udiskie -aNt &"
 #exec --no-startup-id uTools &
 exec --no-startup-id nitrogen --restore &
 #exec --no-startup-id xautolock -time 10 -locker 'i3lock-fancy -gpf 文泉驿等宽正黑 -- scrot -z -o'
@@ -84,7 +84,7 @@ bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart du
 #bindsym Print exec --no-startup-id i3-scrot
 #bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym Print exec --no-startup-id deepin-screenshot
-bindsym Ctrl+Print exec --no-startup-id "deepin-screenshot -f -"
+bindsym Ctrl+Print exec --no-startup-id "scrot '%Y-%m-%d_%H:%S_scrot.png' -e 'mv $f ~/screenshot/ && notify-send save，$f，in， ~/screenshot'"
 bindsym $mod+Print exec --no-startup-id drawing
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 #bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
