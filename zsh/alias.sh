@@ -11,6 +11,7 @@ alias db_kill="killall mongod"
 ## git 相关
 
 alias gp="git push origin master"
+alias gpe="git push gitee master"
 alias gm="git commit -m "
 alias gs="git status"
 
@@ -78,5 +79,7 @@ alias tmux="TERM=xterm-256color tmux"
 #
 alias random-secret="< /dev/urandom tr -dc 0-9-A-Z-a-z-|head -c ${1:-10};echo"
 
+# pdf
 
+alias pdf="zathura"
 

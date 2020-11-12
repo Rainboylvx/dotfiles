@@ -17,6 +17,7 @@ exec --no-startup-id nitrogen --restore &
 #exec_always --no-startup-id sslocal -c $HOME/.scripts/ss.json > /dev/null &
 #
 exec_always --no-startup-id /home/rainboy/bin/start_in_start.sh
+exec_always --no-startup-id /home/rainboy/mycode/dotfiles/start.sh
 
 # 开启混成 可以透明
 exec --no-startup-id picom -b
@@ -150,8 +151,8 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 #navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+bindsym Ctrl+Mod1+Right workspace next
+bindsym Ctrl+Ctrl+Left workspace prev
 #bindsym $mod+Left workspace pre
 #bindsym $mod+Right workspace next
 #bindsym $mod+Down 
