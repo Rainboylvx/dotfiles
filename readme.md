@@ -152,4 +152,10 @@ cp rime ~/.config/fcitx/rime
 ## Arch Linux中禁用UTC解决双系统时间问题
 https://www.cnblogs.com/zhuxiaoxi/p/7714535.html
 
+## dwm 安装
+
+```
+ln -s $PATH/dwm ~/.dwm
+```
+
 
