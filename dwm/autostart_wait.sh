@@ -5,4 +5,4 @@ sleep 10
 fcitx &
 dunst &
 /home/rainboy/bin/trojan/trojan -c /home/rainboy/bin/trojan/config.json 2>&1 > /dev/null &
-/usr/bin/mpd $DOTFILES_SCRIPT_PATH/mpd/mpd.config &
+/usr/bin/mpd $DOTFILES_SCRIPT_PATH/mpd/mpd.conf
