@@ -140,7 +140,8 @@ export IDENTIFIER="unicode"
 #. "$DIR/dwmbar-functions/dwm_backlight.sh"
 . "$DIR/dwmbar-functions/dwm_pulse.sh"
 . "$DIR/dwmbar-functions/dwm_resources.sh"
-#. "$DIR/dwmbar-functions/dwm_pulse.sh"
+. "$DIR/dwmbar-functions/dwm_mpc.sh"
+. "$DIR/dwmbar-functions/dwm_fcitx_status.sh"
 #. "$DIR/dwmbar-functions/dwm_weather.sh"
 #. "$DIR/dwmbar-functions/dwm_vpn.sh"
 #. "$DIR/dwmbar-functions/dwm_network.sh"
@@ -150,7 +151,9 @@ export IDENTIFIER="unicode"
 
 
 #xsetroot -name "$(dwm_resources $DIR)  ⬇️ $vel_recv ⬆️ $vel_trans $(dwm_pulse) [ $(print_bat) ]$(show_record) $(print_date) "
-xsetroot -name "$(dwm_resources $DIR) $(dwm_pulse) [ $(print_bat) ]$(show_record) $(print_date) "
+#xsetroot -name " [$(dwm_mpc)] $(dwm_resources $DIR) $(dwm_pulse) [ $(print_bat) ]$(show_record) $(print_date) "
+#xsetroot -name "[$(dwm_mpc)] [$(fcitxState)]  $(dwm_pulse) $(show_record) $(print_date) "
+xsetroot -name "[$(dwm_mpc)] [$(fcitxState)] [$(dwm_pulse)] $(dwm_resources)"
 
 
 # Update old values to perform new calculations

@@ -10,15 +10,17 @@ dwm_resources () {
     MEMTOT=$(free -h |awk '(NR == 2) {print $2}')
     # CPU temperature
     #CPU=$(sysctl -n hw.sensors.cpu0.temp0 | cut -d. -f1)
-    CPU=$($1/cpu_usage2)
+    #CPU=$($1/cpu_usage2)
     # Used and total storage in /home (rounded to 1024B)
     STOUSED=$(df -h | grep '/home$' | awk '{print $3}')
     STOTOT=$(df -h | grep '/home$' | awk '{print $2}')
-    STOPER=$(df -h | grep '/home$' | awk '{print $5}')
+    #STOPER=$(df -h | grep '/home$' | awk '{print $5}')
+    SHUSED=$(df -h | grep 'StoreHouse$' | awk '{print $3}')
+    SHTOT=$(df -h | grep 'StoreHouse$' | awk '{print $2}')
 
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
-        printf "💻 MEM %s/%s CPU %s STO %s/%s: %s" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT" "$STOPER"
+        printf "[ %s/%s][ %s/%s ][ %s/%s]" "${MEMUSED%i}" "${MEMTOT%i}"  "$STOUSED" "$STOTOT" "${SHUSED}" "${SHTOT}"
     else
         printf "STA | MEM %s/%s CPU %s STO %s/%s: %s" "$MEMUSED" "$MEMTOT" "$CPU" "$STOUSED" "$STOTOT" "$STOPER"
     fi
