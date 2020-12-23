@@ -6,3 +6,4 @@ source $myshellpwd/alias.sh
 source $myshellpwd/env.sh
 source $myshellpwd/function.sh
 
+#eval "$(starship init zsh)"

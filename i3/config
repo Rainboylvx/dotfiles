@@ -6,30 +6,31 @@
 #
 exec_always --no-startup-id fcitx &
 exec_always --no-startup-id /home/rainboy/.config/polybar/launch.sh
-exec_always --no-startup-id nm-applet &
-exec_always --no-startup-id dunst &
-#exec_always --no-startup-id uTools &
-exec_always --no-startup-id pamac-tray &
+#exec_always --no-startup-id nm-applet &
+#exec_always --no-startup-id dunst &
+#exec_always --no-startup-id pamac-tray &
 exec_always --no-startup-id "killall udiskie; exec udiskie -aNt &"
-#exec --no-startup-id uTools &
-exec --no-startup-id nitrogen --restore &
+exec_always --no-startup-id "xbanish &"
+#exec --no-startup-id nitrogen --restore &
 #exec --no-startup-id xautolock -time 10 -locker 'i3lock-fancy -gpf 文泉驿等宽正黑 -- scrot -z -o'
 #exec_always --no-startup-id sslocal -c $HOME/.scripts/ss.json > /dev/null &
 #
-exec_always --no-startup-id /home/rainboy/bin/start_in_start.sh
-exec_always --no-startup-id /home/rainboy/mycode/dotfiles/start.sh
+#exec_always --no-startup-id /home/rainboy/bin/start_in_start.sh
+exec_always --no-startup-id "/home/rainboy/mycode/dotfiles/scripts/autostart_wait.sh"
 
 # 开启混成 可以透明
-exec --no-startup-id picom -b
+exec --no-startup-id picom -i 1.0 -b
 #i3 wm, hide window title bar
-for_window [class="^.*"] border pixel 4
+for_window [class=".*"] border pixel 0
 #for_window [class="uTools"] move up 300px
 for_window [class=".*qq.exe.*"] floating enable
 for_window [class=".*qq.exe.*"] border none
 for_window [class="zhumu"] floating enable
 new_window 1pixel
-gaps inner 1
+gaps inner 10
 gaps outer 5
+#smart_gaps on
+
 
 
 
@@ -61,8 +62,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+m exec xfce4-terminal --drop-down
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+m exec "xfce4-terminal --drop-down --hide-menubar"
+bindsym $mod+Return exec "xfce4-terminal --hide-scrollbar --hide-menubar"
 #bindsym $mod+m exec qterminal -d
 #bindsym $mod+Return exec qterminal
 #bindsym $mod+Return exec terminator
@@ -106,35 +107,33 @@ bindsym $mod+d exec rofi -show drun #-theme config
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus up
-bindsym $mod+k focus down
+bindsym $mod+j focus down
+bindsym $mod+k focus up
 bindsym $mod+h focus left
-#bindsym $mod+semicolon focus right
 bindsym $mod+l focus right
 
-# move focused window
 #bindsym $mod+Shift+j move left
 #bindsym $mod+Shift+k move down
 #bindsym $mod+Shift+l move up
 #bindsym $mod+Shift+semicolon move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# move focused window
+bindsym $mod+Left move left
+bindsym $mod+Down move down
+bindsym $mod+Up move up
+bindsym $mod+Right move right
 
 
 # split in horizontal orientation
-bindsym $mod+Shift+h split h
+bindsym $mod+v split h
 # split in vertical orientation
-bindsym $mod+Shift+v split v
+bindsym $mod+s split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+Shift+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -152,7 +151,7 @@ bindsym $mod+a focus parent
 
 #navigate workspaces next / previous
 bindsym Ctrl+Mod1+Right workspace next
-bindsym Ctrl+Ctrl+Left workspace prev
+bindsym Ctrl+Mod1+Left workspace prev
 #bindsym $mod+Left workspace pre
 #bindsym $mod+Right workspace next
 #bindsym $mod+Down 
@@ -233,16 +232,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -256,13 +255,16 @@ bindsym $mod+r mode "resize"
 
 # 增加音量
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 +5%
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 +5%
+bindsym XF86AudioRaiseVolume exec  "pamixer -i 5"
 # 减少音量
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% 
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 -5%
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 -5%
+bindsym XF86AudioLowerVolume exec  "pamixer -d 5"
 # mute sound
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle 
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 toggle
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2 toggle
+bindsym XF86AudioMute exec --no-startup-id "pamixer -t"
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessDown exec xbright -5000 # decrease screen brightness

@@ -1,33 +1,32 @@
-;-------------------------------------------------
-;                                                ;
-;           Polybar config for my themes         ;
-; 				                 ;
-;                                                ;
-;-------------------------------------------------
+;==========================================================
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;   config by Rainboy
+;==========================================================
 
 
 [colors]
-;My colors are set from .Xresources to match everything else
-my_background 	= ${xrdb:background}
-my_foreground 	= ${xrdb:foreground}
-my_color0	= ${xrdb:color0}
-my_color1	= ${xrdb:color1}
-my_color2	= ${xrdb:color2}
-my_color3	= ${xrdb:color3}
-my_color4	= ${xrdb:color4}
-my_color5	= ${xrdb:color5}
-my_color6	= ${xrdb:color6}
-my_color7	= ${xrdb:color7}
-my_color8	= ${xrdb:color8}
-my_color9	= ${xrdb:color9}
-my_color10	= ${xrdb:color10}
-my_color11	= ${xrdb:color11}
-my_color12	= ${xrdb:color12}
-my_color13	= ${xrdb:color13}
-my_color14	= ${xrdb:color14}
-my_color15	= ${xrdb:color15}
-my_colorf = #272827
-my_colorb = #7E807E
+background = #1e1e20
+background-ARGB = #ad1e1e20
+background-alt = #444
+foreground = #c5c8c6
+foreground-alt = #555
+primary = #1e1e20
+secondary = #0e0e0e
+alert = #bd2c40
+
+foreground_date=#0e0e0e
+background_date=#7E807E
+
+date_underline = #6dff0000
+volume_underline = #6d00d0ff
+temperature_underline = #6d00d0ff
+filesystem_background= #6d00afdd
+filesystem_underline = #6d00ff0d
 
 
 [bar/main_bar]
@@ -36,21 +35,23 @@ my_colorb = #7E807E
 monitor = ${env:MONITOR:}
 bottom = false
 width = 100%
-height = 30
+height = 33
 offset-x = 0
 offset-y = 0
 radius = 0.0
 fixed-center = true
 
 
-background = #1e1e20
-foreground = #c5c8c6
+;background = #1e1e20
+;foreground = #c5c8c6
+
+background = ${colors.background-ARGB}
 
 line-size = 2.5
-line-color = ${colors.my_foreground}
+line-color = ${colors.foreground}
 
 border-size = 0
-border-color = ${colors.my_color2}
+border-color = ${colors.background-ARGB}
 
 padding-left = 0
 padding-right = 0
@@ -58,24 +59,30 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "WenQuanYi Micro Hei:style=Regular:pixelsize=24:weight:bold;5"
-font-1 = "DejaVuSansMono Nerd Font Mono:style=Book:pixelsize=28;4"
+;font-0 = "WenQuanYi Micro Hei:style=Regular:pixelsize=24:weight:bold;5"
+font-0 = fixed:pixelsize=20;1
+font-1 = "DejaVuSansMono Nerd Font Mono:style=Book:pixelsize=28;3"
+;font-1 = "FiraCode Nerd Font:style=Book:pixelsize=28;1"
 
 
 modules-left = i3
-modules-center = date
-modules-right = temperature cpu memory battery wlan pulseaudio
+;modules-center = date
+modules-center = mpd
+modules-right = temperature cpu memory pulseaudio filesystem date
+;modules-right = temperature cpu memory battery wlan pulseaudio
 
 tray-position = right
 tray-padding = 9
-tray-transparent = false
+tray-transparent = true
 tray-offset-y = 0%
 tray-offset-x = 0%
-tray-maxsize = 18
+tray-maxsize = 48
 tray-detached = false
-tray-background = ${colors.my_background}
+;tray-background = ${colors.background-ARGB}
+tray-background = #6d1979a9
+tray-foreground = #000000
 
-;wm-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 
@@ -85,40 +92,48 @@ type = internal/i3
 ; ws-icon-[0-9]+ = label;icon
 ; NOTE: The label needs to match the name of the i3 workspace
 ws-icon-0 = 1;
-ws-icon-1 = 2;
+ws-icon-1 = 2;
 ws-icon-2 = 3;
-ws-icon-3 = 7;龎
-ws-icon-4 = 8;
+ws-icon-3 = 6;
+ws-icon-4 = 10;
 ;ws-icon-3 = 4;
 ;ws-icon-4 = 5;
 
-ws-icon-default = 
+;ws-icon-default = 
+format = <label-state> <label-mode>
 
 label-unfocused-background = #1e1e20
-label-unfocused-foreground = #cbd1cd 
+label-unfocused-foreground = #cbd1cd
 
 label-mode = %mode%
 label-mode-padding = 2
 label-mode-background = #cbd1cd
 
-label-focused = %name%:%icon%
+label-focused = %name% %icon%
 label-focused-foreground = #000000
-label-focused-background = #919893
-label-focused-underline = ${colors.my_foreground}
-label-focused-padding = 1
+label-focused-background = #9d919893
+label-focused-underline = #0000ff
+label-focused-padding = 3
 
 label-unfocused = %name% %icon%
+;label-unfocused-background = #ff0000
 label-unfocused-padding = 1
+label-unfocused-underline= #7dff0000
 
 label-visible = %index%
-label-visible-underline = ${colors.my_foreground}
+label-visible-underline = ${colors.foreground}
+label-visible-background = ${colors.background-ARGB}
 label-visible-padding = 2
 
 label-urgent = %index%
-label-urgent-foreground = ${colors.my_foreground}
-label-urgent-background = ${colors.my_background}
-label-urgent-underline = ${colors.my_foreground}
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.background-ARGB}
+label-urgent-underline = ${colors.foreground}
 label-urgent-padding = 1
+
+label-separator = |
+label-separator-padding = 0
+label-separator-foreground = #6dffb52a
 
 [module/musicinfo]
 type = custom/script
@@ -137,20 +152,21 @@ interval = 1
 date = 
 date-alt = "%Y/%m/%d 星期%Ou"
 
-time = %H:%M
+time = %H:%M:%S
 
 time-alt = %H:%M
 
-format-prefix-foreground = ${colors.my_foreground}
-;format-underline = ${colors.my_color5}
-format-underline =
+format-prefix-foreground = ${colors.foreground}
+;format-underline = 
+format-underline = ${colors.date_underline}
 
 
-label = %date% %time%
+label = [  %date% %time% ]
 label-font = 0
 format = <label>
-format-foreground = #272827
-format-background = #7E807E
+;format-foreground = #272827
+format-foreground = ${colors.foreground_date}
+format-background = ${colors.background_date}
 format-padding = 2
 
 
@@ -170,7 +186,7 @@ format-full-padding = 2
 ;format-charging-background = ${colors.my_background}
 format-charging = "⁣  <label-charging> <animation-charging> "
 
-;format-charging-underline = ${colors.my_color2}
+;format-charging-underline = 
 format-charging-padding = 2
 
 format-discharging-background = ${colors.my_background}
@@ -210,11 +226,6 @@ screenchange-reload = true
 margin-top = 5
 margin-bottom = 5
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-label-padding = 10
-label-foreground = ${colors.my_color8}
 
 [module/wlan]
 type = internal/network
@@ -222,11 +233,11 @@ interface = wlp109s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-foreground = ${colors.my_colorf}
+format-connected-foreground = ${colors.foreground}
 format-connected-background = #7E807E
 format-connected-padding = 2
 label-connected = %essid%
-label-connected-foreground = ${colors.my_colorf}
+label-connected-foreground = ${colors.foreground}
 
 format-disconnected = 
 
@@ -298,11 +309,12 @@ interval = 5
 ;   <label-volume> (default)
 ;   <ramp-volume>
 ;   <bar-volume>
-format-volume = <ramp-volume> <label-volume>
+format-volume = <ramp-volume> <label-volume>  
 
-;format-volume-foreground = #272827
+format-volume-foreground = ${colors.foreground}
 ;format-volume-background = #7E807E
 format-volume-padding = 2
+format-volume-underline = ${colors.volume_underline}
 
 ; Available tags:
 ;   <label-muted> (default)
@@ -312,12 +324,13 @@ format-volume-padding = 2
 
 ; Available tokens:
 ;   %percentage% (default)
-label-volume = %percentage%%
+label-volume = "%percentage%%  "  
 
 ; Available tokens:
 ;   %percentage% (default)
-label-muted =  "  "
+label-muted =  "    "
 label-muted-foreground = #666
+label-muted-padding = 4
 
 ; Only applies if <ramp-volume> is used
 ramp-volume-0 = 
@@ -341,8 +354,8 @@ interval = 1
 ;   <ramp-coreload>
 format = <label>
 format-padding  = 2
-;format-foreground = ${colors.my_colorf}
-;format-background = ${colors.my_colorb}
+format-foreground = ${colors.foreground}
+;format-background = 
 
 
 ; Available tokens:
@@ -384,8 +397,8 @@ interval = 3
 ;   <ramp-swap-free>
 format = <label>
 format-padding = 2
-format-foreground = ${colors.my_colorf}
-format-background = ${colors.my_colorb}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background-ARGB}
 
 ; Available tokens:
 ;   %percentage_used% (default)
@@ -433,5 +446,62 @@ base-temperature = 20
 ; Threshold temperature to display warning label (in degrees celsius)
 ; Default: 80
 warn-temperature = 60
+format-foreground = ${colors.volume_underline}
+format-underline = ${colors.temperature_underline}
+label-warn-foreground = #f00
 
 
+[module/mpd]
+type = internal/mpd
+format-online = <label-time> <label-song>
+;<icon-prev> <icon-stop> <toggle> <icon-next>
+;format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+label-song =  %title%
+label-offline =  mpd is offline
+icon-random = 
+icon-repeat = 凌
+icon-repeatone = 綾
+icon-single = 🔂
+icon-consume = ✀
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 50
+label-song-ellipsis = true
+; Only applies if <bar-progress> is used
+bar-progress-width = 45
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+
+;label-time-foreground= ${colors.foreground}
+label-time-foreground= #555
+label-song-foreground= ${colors.foreground}
+
+[module/filesystem]
+type = custom/script
+
+; Available tokens:
+;   %counter%
+; Command to be executed (using "/bin/sh -c [command]")
+exec = /home/rainboy/mycode/dotfiles/scripts/dwmbar-functions/dwm_resources.sh
+
+; Conditional command that, if defined, needs to exit successfully
+; before the main exec command is invoked.
+; Default: ""
+;exec-if = pgrep -x myservice
+
+; Will the script output continous content?
+; Default: false
+tail = true
+
+; Seconds to sleep between updates
+; Default: 5 (0 if `tail = true`)
+INTERVAL = 5
+format-foreground = ${colors.foreground}
+/*format-background= ${colors.filesystem_background}*/
+format-underline = ${colors.filesystem_underline}
